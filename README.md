@@ -49,7 +49,7 @@ Output: [0]
 ```
 
 **Lời giải:** 
-- Sử dụng kỹ thuật **two-pointers**
+- Sử dụng kỹ thuật **two pointers**
 - Thay vì chú tâm vào việc chuyển tất cả các số 0 về cuối, ta đưa các giá trị khác 0 về đầu mảng
 - Duy trì một biến `j`: index của phần tử khác 0 tiếp theo
 - Duyệt qua mảng với chỉ số `i`
@@ -91,7 +91,7 @@ Output: 2
 
 **Lời giải:**
 - Sử dụng thuật toán **Boyer-Moore Voting Algorithm**
-- Ý tưởng: Phần tử majority xuất hiện nhiều hơn một nửa, nên nếu ta "抵消" (triệt tiêu) các cặp phần tử khác nhau, phần tử còn lại sẽ là majority element
+- Ý tưởng: Phần tử majority xuất hiện nhiều hơn một nửa, nên nếu ta "triệt tiêu" các cặp phần tử khác nhau, phần tử còn lại sẽ là majority element
 - Duy trì một `candidate` (ứng viên) và `count` (bộ đếm)
 - Khi `count = 0`, chọn phần tử hiện tại làm candidate mới
 
@@ -138,7 +138,7 @@ Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 ```
 
 **Lời giải:**
-- Sử dụng kỹ thuật **two-pointers**
+- Sử dụng kỹ thuật **two pointers**
 - Vì mảng đã được sắp xếp, các phần tử trùng nhau sẽ nằm liền kề
 - Duy trì pointer `j` để theo dõi vị trí của phần tử unique tiếp theo
 - Duyệt mảng với pointer `i`, khi gặp phần tử mới (khác phần tử trước đó), đưa nó về vị trí `j`
