@@ -1,3 +1,4 @@
 {
     "chat.useAgentSkills": true,
+    "editor.inlineSuggest.enabled": false
 }
