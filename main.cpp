@@ -12,7 +12,7 @@ int main () {
 	tmp.add (3);
 	tmp.add (2);
 	tmp.add (6);
-	tmp.add (4, 4);
+	tmp.add (0, 9);
 	cout << tmp.toString ();
 	return 0;
 }

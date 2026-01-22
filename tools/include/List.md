@@ -1,80 +1,49 @@
-# List Interface Documentation
 
-This document explains the design and usage of the `List` interface defined in `List.h`.
+# Tài liệu giao diện List
 
-## Overview
+Tài liệu này giải thích về giao diện (interface) `List` được định nghĩa trong file `List.hpp`.
 
-The `List` class template is an abstract interface for a generic list container, similar to standard C++ containers. It is designed to be inherited by concrete list implementations (such as linked lists or array lists). The interface enforces standard container semantics and value-based operations.
+## Tổng quan
 
-## Interface Definition
+- Tính trừu tương:
+`List` là một abstract class, dùng làm Interface cho các cấu trúc danh sách tổng quát trong C++. Interface này được thiết kế để các lớp danh sách cụ thể (như LinkedList, ArrayList, ...) kế thừa (inherit) và cài đặt lại các phương thức bên trong.
 
-```
-template <typename T>
-class List {
-    // ...
-};
-```
+## Định nghĩa giao diện
 
-- `T`: The type of elements stored in the list.
+- `template <typename T> class List`:
+  - `T` là kiểu dữ liệu của phần tử trong danh sách.
 
-## Member Types
+## Các phương thức thuần ảo (pure virtual)
 
-- `value_type`: Alias for the element type `T`.
-- `size_type`: Alias for `std::size_t`, used for sizes and positions.
-
-## Core Methods
-
-- `virtual ~List() = default;`
-  - Virtual destructor for safe polymorphic use.
-- `virtual bool empty() const noexcept = 0;`
-  - Returns `true` if the list is empty.
-- `virtual size_type size() const noexcept = 0;`
-  - Returns the number of elements in the list.
-- `virtual void push_back(const T& value) = 0;`
-  - Appends an element to the end of the list.
-- `virtual void insert(size_type pos, const T& value) = 0;`
-  - Inserts an element at the specified position.
+- `virtual void add(T e) = 0;`
+  - Thêm phần tử `e` vào cuối danh sách.
+- `virtual void add(int index, T e) = 0;`
+  - Thêm phần tử `e` vào vị trí `index` trong danh sách.
+- `virtual T removeAt(int index) = 0;`
+  - Xóa và trả về phần tử tại vị trí `index`.
+- `virtual bool removeItem(T item) = 0;`
+  - Xóa phần tử đầu tiên có giá trị bằng `item` (nếu có), trả về true nếu xóa thành công.
+- `virtual bool empty() = 0;`
+  - Kiểm tra danh sách có rỗng không.
+- `virtual int size() = 0;`
+  - Trả về số lượng phần tử trong danh sách.
 - `virtual void clear() = 0;`
-  - Removes all elements from the list.
+  - Xóa toàn bộ phần tử trong danh sách.
+- `virtual T get(int index) = 0;`
+  - Lấy giá trị phần tử tại vị trí `index`.
+- `virtual void set(int index, T e) = 0;`
+  - Gán giá trị `e` cho phần tử tại vị trí `index`.
+- `virtual int indexOf(T item) = 0;`
+  - Trả về vị trí đầu tiên của phần tử có giá trị bằng `item` (hoặc -1 nếu không có).
+- `virtual bool contains(T item) = 0;`
+  - Kiểm tra danh sách có chứa phần tử `item` không.
+- `virtual std::string toString() = 0;`
+  - Trả về chuỗi biểu diễn toàn bộ danh sách.
 
-## Iterator Interface (Optional)
+## Lưu ý
 
-The nested `Iterator` class provides an interface for iterating over the list, similar to standard C++ iterators. Implementations should provide concrete iterator types.
-
-### Iterator Methods
-
-- `virtual ~Iterator() = default;`
-- `virtual Iterator& operator++() = 0;`
-  - Advances the iterator.
-- `virtual T& operator*() const = 0;`
-  - Dereferences the iterator to access the element.
-- `virtual bool operator!=(const Iterator& other) const = 0;`
-  - Compares two iterators for inequality.
-
-### Iterator Access
-
-- `virtual Iterator* begin() = 0;`
-  - Returns a pointer to an iterator at the beginning of the list.
-- `virtual Iterator* end() = 0;`
-  - Returns a pointer to an iterator one past the last element.
-
-## Usage Example
-
-To use this interface, inherit from `List<T>` and implement all pure virtual methods:
-
-```cpp
-#include "List.h"
-
-class MyList : public List<int> {
-    // Implement all required methods...
-};
-```
-
-## Notes
-
-- This is an interface only; it does not provide any storage or implementation.
-- The iterator interface is optional but recommended for standard compliance.
-- All operations use value semantics (no raw pointers to elements).
+- Đây chỉ là một Interface, không chứa dữ liệu hay implement cụ thể.
+- Khi kế thừa từ `List<T>`, bạn phải cài đặt đầy đủ tất cả các phương thức thuần ảo trên.
 
 ---
-For further details, see the source code in `tools/include/List.h`.
+Xem chi tiết trong file `tools/include/List.hpp`.

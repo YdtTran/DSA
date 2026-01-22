@@ -87,17 +87,23 @@ template <typename T> void LinkedList<T>::add (int index, T e) {
 	// If index < 0 or index > this->length(0 1 2 3 ... length - 1); therefore, it is possible to make it the position length
 	if (index < 0 || index > length)
 		throw std::out_of_range ("Invalid index < 0 or > length");
-	if (this->length == 0) {
-		this->add (e);
-		return;
-	}
-	Node* curr	  = this->head;
 	Node* newNode = new Node (e);
-	for (int i = 1; i < index; ++i) {
-		curr = curr->next;
+	if (index == 0) {
+		newNode->next = this->head;
+		this->head	  = newNode;
+		if (this->length == 0)
+			this->tail = this->head;
+	} else {
+		Node* curr = this->head;
+		for (int i = 1; i < index; ++i) {
+			curr = curr->next;
+		}
+		newNode->next = curr->next;
+		curr->next	  = newNode;
+		if (index == length)
+			tail = newNode;
 	}
-	newNode->next = curr->next;
-	curr->next	  = newNode;
+	++length;
 }
 
 template <typename T> T LinkedList<T>::removeAt (int index) {
