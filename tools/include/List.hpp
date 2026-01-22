@@ -1,7 +1,7 @@
 
 #ifndef LIST_H
 #define LIST_H
-
+#include <string>
 // List interface
 template <typename T> class List {
 
@@ -17,7 +17,7 @@ template <typename T> class List {
 	virtual void set (int index, T e) = 0;
 	virtual int indexOf (T item)	  = 0;
 	virtual bool contains (T item)	  = 0;
-	virtual string toString ()		  = 0;
+	virtual std::string toString ()	  = 0;
 };
 
 #endif // LIST_H
