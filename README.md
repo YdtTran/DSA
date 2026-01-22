@@ -1,45 +1,22 @@
-# DSA Project
+# DSA Projcet
 
 ## Giới thiệu
 
-Đây là project tổng hợp các bài tập và thuật toán về Cấu trúc dữ liệu & Giải thuật (Data Structures & Algorithms - DSA). Mỗi bài toán được lưu trữ dưới dạng file mã nguồn C++ trong thư mục `array/` và các thư mục liên quan.
+Đây là một project cung cấp các `Template` để cài đặt (`Implement`) các kiểu dữ liệu cơ bản trong môn học KTLT và DSA tại HCMUT.
 
 ## Cấu trúc thư mục
 
-- `array/` : Chứa các bài tập về mảng (array), mỗi file là một bài toán riêng biệt.
-- `slides/` : (Nếu có) Chứa các slide hoặc tài liệu liên quan.
-- `README.md` : File hướng dẫn tổng quan về project.
+- `array/`: Các bài tập về chủ đề `array`.
+- `slides/`: Chứa các slides bài giảng về DSA của thầy Trần Ngọc Bảo Duy.
+- `tools/`: Chứa các thư viện và cách cài đặt các kiểu dữ liệu cơ bản (đang cập nhật thêm).
 
-## Hướng dẫn biên dịch và chạy
+## Hướng dẫn chạy và thực hành
 
-### Yêu cầu
-
-- Đã cài đặt trình biên dịch C++ (g++, clang++, ...)
-- Đã cài đặt make (nếu muốn dùng makefile)
-
-### Sử dụng Makefile
-
-Vào thư mục `array/` và chạy:
-
-```sh
-make
-```
-
-Lệnh này sẽ biên dịch tất cả các file `.cpp` thành các file thực thi `.exe` tương ứng.
-
-Để xóa các file thực thi:
-
-```sh
-make clean
-```
-
-### Biên dịch thủ công
-
-Ví dụ với file `26.cpp`:
-
-```sh
-g++ -o 26.exe 26.cpp
-```
+1. Cài đặt `CMake` và `build-tools` của Visual Studio.
+2. Cài đặt `VSCode` và extension [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools).
+3. Mở thư mục project trong `VSCode`.
+4. Chọn `CMake: Configure` để cấu hình project.
+5. Chọn `CMake: Build` để biên dịch project.
 
 ## Đóng góp
 
