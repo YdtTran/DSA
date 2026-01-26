@@ -1,14 +1,14 @@
 
-# Tài liệu giao diện List
+# Tài liệu Interface List
 
 Tài liệu này giải thích về giao diện (interface) `List` được định nghĩa trong file `List.hpp`.
 
 ## Tổng quan
 
-- Tính trừu tương:
+- Tính trừu tượng:
 `List` là một abstract class, dùng làm Interface cho các cấu trúc danh sách tổng quát trong C++. Interface này được thiết kế để các lớp danh sách cụ thể (như LinkedList, ArrayList, ...) kế thừa (inherit) và cài đặt lại các phương thức bên trong.
 
-## Định nghĩa giao diện
+## Định nghĩa Interface
 
 - `template <typename T> class List`:
   - `T` là kiểu dữ liệu của phần tử trong danh sách.
