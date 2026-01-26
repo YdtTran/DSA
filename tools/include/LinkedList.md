@@ -68,29 +68,35 @@ Mỗi node (phần tử) trong danh sách có cấu trúc:
 - Nguyên tắc xoá phần tử: duyệt tới phần tử cần xoá và loại bỏ nó khỏi `LinkedList`. Giả sử ta cần xoá `Node` thứ 2 thì ta sẽ duyệt tới `Node` 1 và nối `Node` 1 với `Node` 3. Tương tự với việc thêm phần tử, ta cần phải chia ra 2 trường hợp. Lưu ý nhớ giải phóng các `Node` đã xoá.
 
 ```cpp
-    if (index >= this->length) return nullptr;
+template <typename T> T LinkedList<T>::removeAt (int index) {
+    if (index >= length || index < 0)
+        throw std::out_of_range ("Invalid Index");
     T data;
-    if (index == 0){// Loại bỏ node đầu tiên.
-        Node* tmp = this->head;
-        this->head = this->head->next;
+    if (index == 0) {
+        Node* tmp = head;
+    if (length == 1) {
+        head = nullptr;
+        tail = nullptr;
+    } else
+        head = head->next;
         data = tmp->data;
         delete tmp;
     } else {
-        Node* curr = this->head;
-        for (int i = 1; i < index - 1; ++i){ // Duyệt tới `Node` index - 1.
+        Node* curr = head;
+        for (int i = 1; i < index; ++i)
             curr = curr->next;
-        }
-        Node* tmp  = curr->next;
-        data     = tmp->data;
-        if (index == this->length - 1) {
+        Node* tmp = curr->next;
+        data   = tmp->data;
+        if (index == length - 1) {
             curr->next = nullptr;
-            this->tail = curr;
-        }
-        else
-            curr->next = curr->next->next;
+            tail    = curr;
+        } else
+        curr->next = curr->next->next;
         delete tmp;
     }
+    --length;
     return data;
+}
 ```
 
 ---
